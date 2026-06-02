@@ -4,8 +4,7 @@ exports.handler = async function(event) {
 
   const url = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=cafes+dog+friendly+en+${encodeURIComponent(ciudad)}&key=${apiKey}`;
 
-  const fetch = await import('node-fetch');
-  const response = await fetch.default(url);
+  const response = await fetch(url);
   const data = await response.json();
 
   const cafes = data.results.slice(0, 6).map(place => ({
